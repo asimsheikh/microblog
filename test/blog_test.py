@@ -1,3 +1,4 @@
+import requests
 from pydantic import BaseModel
 
 class Task(BaseModel):
@@ -18,9 +19,12 @@ def test_initial():
 
 def test_can_add_todo():
     repo = MemRepo()
-    repo.add_task(1)
-    assert repo.get_tasks() == [1]
+    task = Task(name="Go shopping")
+    repo.add_task(task)
+    assert repo.get_tasks() == [task]
 
-    repo.add_task(2)
-    assert repo.get_tasks() == [1,2]
+    repo.add_task(task)
+    assert repo.get_tasks() == [task,task]
 
+def test_flask_app_running():
+    assert 'hello' in requests.get('http://127.0.0.1:5000/').text
