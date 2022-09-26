@@ -7,24 +7,6 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
-<h1>hello world</h1>
-
-<p>Entering some basic text</p>
-<p>Altering the template to use jinja2 templates</p>
-
-<button hx-post="/api" hx-trigger="click" hx-target="#posts" hx-swap="outerHTML">
-    Add Posts</button>
-
-<p>__</p>
-
-<form hx-post="/api" hx-indicator="#indicator" hx-ext="json-enc" hx-target="#json" hx-swap="outerHTML">
-    <img id="indicator" class="htmx-indicator" src="/spinner.gif" />
-    <label for="name">Task Name</label>
-    <input id="name" name="name" type="text">
-    <input type="submit" value="Submit">
-</form>
-
-<br>
 <div>
     <label for="title">Title</label>
     <input id="title" name="title" type="text">
@@ -37,8 +19,6 @@
         Blog</button>
 </div>
 
-<div id="posts"></div>
-<div id="json"></div>
 <div id="tasks"></div>
 
 <script src="https://unpkg.com/htmx.org@1.8.0"
