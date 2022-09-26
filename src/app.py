@@ -15,7 +15,7 @@ def api():
         data =  request.json or {}
         blog = Blog(title=data['title'], blog=data['blog'])
         repo.add_blog(blog)
-        blogs = repo.get_blogs()
+        blogs= repo.get_blogs()
             
         return f'{"<br>".join(str(blog) for blog in blogs)}'
     return 'No data'

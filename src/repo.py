@@ -6,11 +6,11 @@ class Blog(BaseModel):
 
 class MemRepo:
     def __init__(self):
-        self.db = []
+        self.db: list[Blog] = []
 
     def add_blog(self, blog: Blog):
         self.db.append(blog)
 
-    def get_blogs(self):
+    def get_blogs(self) -> list[Blog]:
         return self.db
 
