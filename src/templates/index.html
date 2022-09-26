@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<h1>hello world</h1>
+
+<p>Entering some basic text</p>
+<p>Altering the template to use jinja2 templates</p>
+
+<button hx-post="/api" hx-trigger="click" hx-target="#posts" hx-swap="outerHTML">
+    Add Posts</button>
+
+<p>__</p>
+
+<form hx-post="/api" hx-indicator="#indicator" hx-ext="json-enc" hx-target="#json" hx-swap="outerHTML">
+    <img id="indicator" class="htmx-indicator" src="/spinner.gif" />
+    <label for="name">Task Name</label>
+    <input id="name" name="name" type="text">
+    <input type="submit" value="Submit">
+</form>
+
+<br>
+<div>
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text">
+    <br>
+
+    <label for="blog">Blog</label>
+    <input id="blog" name="blog" type="text">
+
+    <button hx-post="/api" hx-include="[name='blog'],[name='title']" hx-ext="json-enc" hx-target="#tasks">Add
+        Blog</button>
+</div>
+
+<div id="posts"></div>
+<div id="json"></div>
+<div id="tasks"></div>
+
+<script src="https://unpkg.com/htmx.org@1.8.0"
+    integrity="sha384-cZuAZ+ZbwkNRnrKi05G/fjBX+azI9DNOkNYysZ0I/X5ZFgsmMiBXgDZof30F5ofc"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
