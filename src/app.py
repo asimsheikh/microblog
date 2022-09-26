@@ -13,11 +13,10 @@ def index():
 def api():
     if request.method == 'POST':
         data =  request.json or {}
-        name = data['name'] or ''
-        task = Task(name=name)
-        repo.add_task(task)
-        tasks = repo.get_tasks()
+        blog = Blog(title=data['title'], blog=data['blog'])
+        repo.add_blog(blog)
+        blogs = repo.get_blogs()
             
-        return f'{"".join(str(task.name) for task in tasks)}'
+        return f'{"<br>".join(str(blog) for blog in blogs)}'
     return 'No data'
 
