@@ -9,6 +9,10 @@ repo = MemRepo()
 def index():
     return render_template('index.html')
 
+@app.route('/alpinejs')
+def alpine():
+    return render_template('alpine.html')
+
 @app.route('/api', methods=['GET', 'POST'])
 def api():
     if request.method == 'POST':
