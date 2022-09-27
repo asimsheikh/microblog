@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alpine.js labs</title>
+    <meta charset="UTF-8" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div x-data="{open: false}">
+        <button @click="open = !open">Toggle modal</button>
+        <div x-show="open" x-transition>Welcome to the blog...</div>
+    </div>
+
+    <br />
+    <div x-data="{todo: null, isLoading: false}">
+        <button @click=" 
+        isLoading = true 
+        todo = null
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+                   .then(r => r.json())
+                   .then(data => {todo = data ; isLoading = false})">
+            Fetch Todo
+        </button>
+        <button @click="todo = null">Clear Todo</button>
+
+        <div x-show="isLoading">
+            <img src="https://samherbert.net/svg-loaders/svg-loaders/bars.svg" alt="Lamp" width="32" height="32"
+                style="background-color: lightskyblue; padding: 10px;" />
+        </div>
+        <template x-if="todo">
+            <!-- <p x-text="JSON.stringify(todo)"></p> -->
+            <div x-transition.opacity>
+                <p x-text="todo.userId"></p>
+                <p x-text="todo.title"></p>
+                <p x-text="todo.completed"></p>
+            </div>
+        </template>
+    </div>
+
+    <div x-data="{todos: null, isLoading: false}">
+        <h1>Fetch Todos</h1>
+        <button @click=" 
+        isLoading = true 
+        todos = null
+        fetch('https://jsonplaceholder.typicode.com/todos')
+                   .then(r => r.json())
+                   .then(data => { todos = data ; isLoading = false})">
+            Fetch Todo
+        </button>
+        <button @click="todos = null">Clear Todo</button>
+
+        <div x-show="isLoading">
+            <img src="https://samherbert.net/svg-loaders/svg-loaders/bars.svg" alt="Lamp" width="32" height="32"
+                style="background-color: lightskyblue; padding: 10px;" />
+        </div>
+        <template x-if="todos">
+            <!-- <p x-text="JSON.stringify(todo)"></p> -->
+            <template x-for="todo in todos">
+                <div style="margin: 10px; padding: 10px; background-color: lightgrey;">
+                    <p x-text="todo.userId"></p>
+                    <p x-text="todo.title"></p>
+                    <p x-text="todo.completed"></p>
+                </div>
+            </template>
+        </template>
+    </div>
+</body>
+
+</html>
