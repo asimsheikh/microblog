@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 </head>
 
 <body>
+    <button x-data="{id: '2'}" :id="id" @click="id = Math.round(Math.random() * 10000)">Click me</button>
 </body>
 
 </html>
