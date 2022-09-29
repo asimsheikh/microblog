@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://alpinejs.dev/build/assets/app.5023d407.css" />
     <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -20,13 +21,13 @@
                             <div class="rounded-xl bg-[#F9FAFB]">
                                 <!-- Demo -->
                                 <div class="px-5 py-16 min-h-[20rem] flex items-center justify-center">
-                                    <div x-data="ivcnalxjdj" class="prose w-full">
+                                    <div x-data="ivcnalxjdj" id="editor" class="prose w-full">
                                         <textarea x-ref="textArea"></textarea>
+                                        <button class="bg-blue-200 px-4 py-2" @click="sendData">Log Value</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="mt-4 rounded-xl bg-[#F9FAFB]"></div>
                         </div>
                     </div>
                 </div>
@@ -44,6 +45,9 @@
                             editor.value(this.value);
                             editor.codemirror.on('change', () => { this.value = editor.value(); });
                         },
+                        sendData() {
+                            console.log(this.value)
+                        }
                     }))
             })
         </script>
