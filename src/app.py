@@ -13,6 +13,10 @@ def index():
 def alpine():
     return render_template('alpine.html')
 
+@app.route('/microblog')
+def microblog():
+    return render_template('microblog.html')
+
 @app.route('/api', methods=['GET', 'POST'])
 def api():
     if request.method == 'POST':

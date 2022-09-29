@@ -14,4 +14,4 @@ def test_can_add_todo():
     assert repo.get_blogs() == [blog, blog]
 
 def test_flask_app_running():
-    assert 'Blog' in requests.get('http://127.0.0.1:5000/').text
+    assert 'enter color name' in requests.get('http://127.0.0.1:5000/').text
