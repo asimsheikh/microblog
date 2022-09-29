@@ -17,6 +17,10 @@ def alpine():
 def microblog():
     return render_template('microblog.html')
 
+@app.route('/editor')
+def editor():
+    return render_template('editor.html')
+
 @app.route('/api', methods=['GET', 'POST'])
 def api():
     if request.method == 'POST':

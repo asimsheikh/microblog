@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://alpinejs.dev/build/assets/app.5023d407.css" />
+    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+</head>
+
+<body>
+    <div x-data>
+        <div class="mx-auto mt-20 max-w-6xl">
+            <div class="flex items-start justify-start gap-12">
+                <div class="w-0 flex-1 px-4">
+                    <div class="mb-32">
+                        <div x-data="{ expanded: false }" class="mt-8">
+
+                            <div class="rounded-xl bg-[#F9FAFB]">
+                                <!-- Demo -->
+                                <div class="px-5 py-16 min-h-[20rem] flex items-center justify-center">
+                                    <div x-data="ivcnalxjdj" class="prose w-full">
+                                        <textarea x-ref="textArea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 rounded-xl bg-[#F9FAFB]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('ivcnalxjdj',
+                    () => ({
+                        value: '# Write Some Markdown...',
+                        init() {
+                            let editor = new SimpleMDE({ element: this.$refs.textArea });
+                            editor.value(this.value);
+                            editor.codemirror.on('change', () => { this.value = editor.value(); });
+                        },
+                    }))
+            })
+        </script>
+</body>
+
+</html>
